@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class ex2_AplusBmius3 {
+public class ex2_AplusB_3 {
 
 	public static void main(String[] args) throws IOException {
 
