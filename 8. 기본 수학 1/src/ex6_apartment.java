@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class ex5_ACMhotel {
+public class ex6_apartment {
 
 	public static void main(String[] args) throws IOException {
 
@@ -12,35 +12,39 @@ public class ex5_ACMhotel {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int T = Integer.parseInt(br.readLine());
-
-		int k, n;
-		for (int i = 0; i < T; i++) {
-
-			k = Integer.parseInt(br.readLine());
-			n = Integer.parseInt(br.readLine());
-			bw.write(liveIn(k, n) + "\n");
-
+		
+		String[] strs;
+		for(int i = 0; i < T; i++) {
+			
+			strs = br.readLine().split(" ");
+			int H = Integer.parseInt(strs[0]);
+			int N = Integer.parseInt(strs[2]);
+			
+			bw.write(room(H, N) + "\n");
+			
 		}
 
 		bw.close();
 	}
 
-	private static int liveIn(int k, int n) {
+	private static String room(int H, int N) {
 
-		if (n == 1) {
-			return 1;
-		}else if(k == 0) {
-			return n;
+		int Y = 0;
+		int X = 0;
+		
+		if(N % H == 0) {
+			Y = H;
+			X = N / H;
 		}else {
-			
-			int result = 0;
-			for(int i = 1; i <= n; i++) {
-				result += liveIn(k-1, i);
-			}
-			
-			return result;
+			Y = N % H;
+			X = N / H + 1;
 		}
 		
+		if(X < 10) {
+			return Y + "0" + X;
+		}
+		
+		return Y + "" + X;
 	}
 
 }
